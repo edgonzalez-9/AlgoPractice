@@ -8,10 +8,20 @@
 function maxChar(str) {
     let split = str.split('');
     let chars = {};
+    let max = 0;
+    let maxChar = '';
+
     for (let char of split) {
         chars[char] = chars[char] + 1 || 1;
     }
-    return Object.keys(chars).reduce(function(a,b){return chars[a] > chars[b] ? a : b})
+    
+    for (let char in chars) {
+        if (chars[char] > max) {
+            max = chars[char];
+            maxChar = char;
+        }
+    }
+    return maxChar
 }
 
 module.exports = maxChar;
